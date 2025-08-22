@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Calendar, Thermometer, Droplets, Sun, Scissors } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const GrowingGuide = () => {
+  useScrollAnimation();
   const growingStages = [
     {
       stage: "Planting",
@@ -98,12 +100,12 @@ const GrowingGuide = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-6 text-center">
+      <section className="py-20 px-6 text-center scroll-animate">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-crocus-deep mb-6 animate-fade-in">
+          <h1 className="text-5xl md:text-6xl font-bold text-crocus-deep mb-6">
             Cultivating Crocus Sativus
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Learn the ancient art of growing saffron crocus. From planting bulbs to harvesting 
             the precious stigmas, discover the complete process of cultivating the world's most valuable spice.
           </p>
@@ -111,7 +113,7 @@ const GrowingGuide = () => {
       </section>
 
       {/* Growing Stages */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 scroll-animate scroll-animate-delay-1">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-crocus-deep text-center mb-16">
             The Growing Process
@@ -120,8 +122,7 @@ const GrowingGuide = () => {
             {growingStages.map((stage, index) => (
               <Card 
                 key={index} 
-                className="shadow-elegant hover:shadow-glow transition-all duration-500 bg-white/80 backdrop-blur-sm border-crocus-light/30 hover:scale-105 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="shadow-elegant hover:shadow-glow transition-all duration-500 bg-white/80 backdrop-blur-sm border-crocus-light/30 hover:scale-105"
               >
                 <CardHeader className="text-center pb-4">
                   <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 text-white">
@@ -150,7 +151,7 @@ const GrowingGuide = () => {
       </section>
 
       {/* Growing Conditions */}
-      <section className="py-16 px-6 bg-gradient-card">
+      <section className="py-16 px-6 bg-gradient-card scroll-animate scroll-animate-delay-2">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-crocus-deep text-center mb-16">
             Essential Growing Conditions
@@ -159,8 +160,7 @@ const GrowingGuide = () => {
             {conditions.map((condition, index) => (
               <Card 
                 key={index} 
-                className="text-center shadow-elegant hover:shadow-glow transition-all duration-300 bg-white/70 backdrop-blur-sm border-crocus-light/30 hover-scale animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="text-center shadow-elegant hover:shadow-glow transition-all duration-300 bg-white/70 backdrop-blur-sm border-crocus-light/30 hover-scale"
               >
                 <CardHeader className="pb-4">
                   <div className="w-12 h-12 bg-saffron-light/30 rounded-full flex items-center justify-center mx-auto mb-4 text-crocus-deep">
@@ -181,9 +181,9 @@ const GrowingGuide = () => {
       </section>
 
       {/* Success Tips */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 scroll-animate scroll-animate-delay-3">
         <div className="max-w-4xl mx-auto">
-          <Card className="shadow-glow bg-gradient-accent text-white border-none animate-scale-in">
+          <Card className="shadow-glow bg-gradient-accent text-white border-none">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl mb-4">Success Tips</CardTitle>
             </CardHeader>
@@ -214,7 +214,7 @@ const GrowingGuide = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-crocus-deep text-white text-center">
+      <footer className="py-12 px-6 bg-crocus-deep text-white text-center scroll-animate scroll-animate-delay-3">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-2xl font-semibold mb-4">Ready to Start Growing?</h3>
           <p className="text-white/80 mb-6 leading-relaxed">
