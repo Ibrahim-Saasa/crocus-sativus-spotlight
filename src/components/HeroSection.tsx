@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/crocus-sativus-hero.jpg";
 
 const HeroSection = () => {
@@ -33,13 +34,15 @@ const HeroSection = () => {
           >
             Learn More
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-white/30 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
-          >
-            Growing Guide
-          </Button>
+          <Link to="/growing-guide">
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-white/30 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              Growing Guide
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
