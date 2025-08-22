@@ -8,32 +8,32 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 270 20% 98%;
-    --foreground: 270 15% 9%;
+    --background: 270 15% 8%;
+    --foreground: 270 20% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 270 15% 9%;
+    --card: 270 20% 12%;
+    --card-foreground: 270 20% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 270 15% 9%;
+    --popover: 270 20% 12%;
+    --popover-foreground: 270 20% 90%;
 
     --primary: 270 91% 65%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 270 15% 8%;
 
-    --secondary: 45 100% 85%;
-    --secondary-foreground: 270 15% 9%;
+    --secondary: 45 60% 25%;
+    --secondary-foreground: 45 100% 85%;
 
-    --muted: 270 20% 96%;
-    --muted-foreground: 270 8% 46%;
+    --muted: 270 25% 15%;
+    --muted-foreground: 270 20% 70%;
 
-    --accent: 45 93% 47%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 80% 55%;
+    --accent-foreground: 270 15% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 270 20% 88%;
-    --input: 270 20% 88%;
+    --border: 270 30% 20%;
+    --input: 270 30% 18%;
     --ring: 270 91% 65%;
 
     /* Crocus Sativus Design System */
@@ -45,8 +45,10 @@ All colors MUST be HSL.
     
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--crocus-purple)), hsl(var(--saffron-gold)));
-    --gradient-card: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--muted)));
     --gradient-accent: linear-gradient(45deg, hsl(var(--saffron-gold)), hsl(var(--saffron-light)));
+    --gradient-dark-glow: radial-gradient(ellipse at center, hsl(270 40% 10%) 0%, hsl(270 25% 8%) 50%, hsl(var(--background)) 100%);
+    --gradient-autumn: linear-gradient(45deg, hsl(270 30% 15%) 0%, hsl(45 30% 12%) 50%, hsl(270 25% 10%) 100%);
     
     /* Shadows */
     --shadow-elegant: 0 20px 40px -10px hsl(var(--crocus-purple) / 0.3);
@@ -117,6 +119,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-dark-glow);
   }
 
   .bg-gradient-hero {
@@ -129,6 +132,14 @@ All colors MUST be HSL.
 
   .bg-gradient-accent {
     background: var(--gradient-accent);
+  }
+
+  .bg-gradient-dark-glow {
+    background: var(--gradient-dark-glow);
+  }
+
+  .bg-gradient-autumn {
+    background: var(--gradient-autumn);
   }
 
   .shadow-elegant {
