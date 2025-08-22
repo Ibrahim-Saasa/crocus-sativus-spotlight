@@ -52,6 +52,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				crocus: {
+					purple: 'hsl(var(--crocus-purple))',
+					light: 'hsl(var(--crocus-light))',
+					deep: 'hsl(var(--deep-purple))'
+				},
+				saffron: {
+					gold: 'hsl(var(--saffron-gold))',
+					light: 'hsl(var(--saffron-light))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
