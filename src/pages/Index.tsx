@@ -1,3 +1,4 @@
+import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import BenefitsSection from "@/components/BenefitsSection";
@@ -10,6 +11,7 @@ const Index = () => {
   
   return (
     <main className="min-h-screen">
+      <Navigation />
       <HeroSection />
       <div className="scroll-animate">
         <AboutSection />

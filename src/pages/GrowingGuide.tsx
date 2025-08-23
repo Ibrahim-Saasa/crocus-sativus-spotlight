@@ -1,6 +1,7 @@
+import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Thermometer, Droplets, Sun, Scissors } from "lucide-react";
+import { Calendar, Thermometer, Droplets, Sun, Scissors } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -85,24 +86,13 @@ const GrowingGuide = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
-      {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm shadow-elegant sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/">
-            <Button variant="ghost" className="flex items-center gap-2 hover:bg-crocus-light/20">
-              <ArrowLeft className="w-4 h-4" />
-              Back to Home
-            </Button>
-          </Link>
-          <h1 className="text-2xl font-bold text-crocus-deep">Growing Guide</h1>
-        </div>
-      </header>
-
+    <main className="min-h-screen bg-gradient-dark-glow">
+      <Navigation />
+      
       {/* Hero Section */}
-      <section className="py-20 px-6 text-center scroll-animate">
+      <section className="pt-32 pb-20 px-6 text-center scroll-animate">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-crocus-deep mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-crocus-light mb-6">
             Cultivating Crocus Sativus
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -115,7 +105,7 @@ const GrowingGuide = () => {
       {/* Growing Stages */}
       <section className="py-16 px-6 scroll-animate scroll-animate-delay-1">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-crocus-deep text-center mb-16">
+          <h2 className="text-4xl font-bold text-crocus-light text-center mb-16">
             The Growing Process
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -153,7 +143,7 @@ const GrowingGuide = () => {
       {/* Growing Conditions */}
       <section className="py-16 px-6 bg-gradient-card scroll-animate scroll-animate-delay-2">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-crocus-deep text-center mb-16">
+          <h2 className="text-4xl font-bold text-crocus-light text-center mb-16">
             Essential Growing Conditions
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -231,7 +221,7 @@ const GrowingGuide = () => {
           </Link>
         </div>
       </footer>
-    </div>
+    </main>
   );
 };
 
