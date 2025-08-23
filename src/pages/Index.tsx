@@ -5,18 +5,21 @@ import BenefitsSection from "@/components/BenefitsSection";
 import GrowingSection from "@/components/GrowingSection";
 import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import Spline from "@splinetool/react-spline";
+
 
 const Index = () => {
   useScrollAnimation();
   
   return (
     <main className="min-h-screen relative overflow-hidden">
-      {/* Spline Background */}
-      <div className="fixed inset-0 z-0">
-        <Spline 
-          scene="https://prod.spline.design/IrSwzsExCWbZzG9VKBXjM4Hz/scene.splinecode"
+      {/* 3D Background (Spline embed) */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <iframe
+          src="https://my.spline.design/scrollflower-IrSwzsExCWbZzG9VKBXjM4Hz/"
+          title="Crocus Spline Background"
           className="w-full h-full"
+          loading="lazy"
+          aria-hidden="true"
         />
       </div>
       
