@@ -48,7 +48,7 @@ const BenefitsSection = () => {
                 <h3 className="text-xl font-semibold text-crocus-deep mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   {benefit.description}
                 </p>
               </div>

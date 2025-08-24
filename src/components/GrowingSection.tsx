@@ -47,7 +47,7 @@ const GrowingSection = () => {
                 <CardTitle className="text-lg text-crocus-deep">{item.title}</CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <p className="text-muted-foreground text-center leading-relaxed">
+                <p className="text-gray-700 text-center leading-relaxed">
                   {item.description}
                 </p>
               </CardContent>

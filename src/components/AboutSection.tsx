@@ -21,7 +21,7 @@ const AboutSection = () => {
                 <span className="text-2xl text-white">🌸</span>
               </div>
               <h3 className="text-xl font-semibold text-crocus-deep mb-4">Precious Flowers</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Brief autumn blooms require immediate harvest to preserve delicate threads.
               </p>
             </CardContent>
@@ -33,7 +33,7 @@ const AboutSection = () => {
                 <span className="text-2xl text-white">⚖️</span>
               </div>
               <h3 className="text-xl font-semibold text-crocus-deep mb-4">Worth More Than Gold</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 More valuable than gold, costing $500-$5000 per pound.
               </p>
             </CardContent>
@@ -45,7 +45,7 @@ const AboutSection = () => {
                 <span className="text-2xl text-white">🏺</span>
               </div>
               <h3 className="text-xl font-semibold text-crocus-deep mb-4">Ancient Heritage</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Treasured for 3,000+ years for culinary, medicinal, and dyeing uses.
               </p>
             </CardContent>
