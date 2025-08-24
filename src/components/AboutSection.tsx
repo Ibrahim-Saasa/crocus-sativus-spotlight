@@ -22,8 +22,7 @@ const AboutSection = () => {
               </div>
               <h3 className="text-xl font-semibold text-crocus-deep mb-4">Precious Flowers</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Each flower blooms for only 1-2 weeks in autumn, requiring immediate harvest 
-                to preserve the delicate saffron threads.
+                Brief autumn blooms require immediate harvest to preserve delicate threads.
               </p>
             </CardContent>
           </Card>
@@ -35,8 +34,7 @@ const AboutSection = () => {
               </div>
               <h3 className="text-xl font-semibold text-crocus-deep mb-4">Worth More Than Gold</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Saffron can cost $500-$5000 per pound, making it one of the most expensive 
-                spices in the world by weight.
+                More valuable than gold, costing $500-$5000 per pound.
               </p>
             </CardContent>
           </Card>
@@ -48,8 +46,7 @@ const AboutSection = () => {
               </div>
               <h3 className="text-xl font-semibold text-crocus-deep mb-4">Ancient Heritage</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Cultivated for over 3,000 years, saffron has been prized by ancient 
-                civilizations for culinary, medicinal, and dyeing purposes.
+                Treasured for 3,000+ years for culinary, medicinal, and dyeing uses.
               </p>
             </CardContent>
           </Card>

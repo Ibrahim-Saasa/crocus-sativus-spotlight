@@ -5,22 +5,22 @@ const GrowingSection = () => {
     {
       step: "1",
       title: "Planting Season",
-      description: "Plant bulbs in late summer (August-September) in well-draining soil with full sun exposure."
+      description: "Plant bulbs in late summer with well-draining soil and full sun."
     },
     {
       step: "2", 
       title: "Soil Preparation",
-      description: "Ensure pH 6.0-8.0, excellent drainage, and rich organic matter. Avoid waterlogged conditions."
+      description: "pH 6.0-8.0 with excellent drainage and rich organic matter."
     },
     {
       step: "3",
       title: "Flowering Period",
-      description: "Flowers bloom in autumn (October-November). Each plant produces 1-7 flowers per season."
+      description: "Autumn blooms with 1-7 flowers per plant each season."
     },
     {
       step: "4",
       title: "Harvesting Time",
-      description: "Harvest stigmas at dawn when flowers first open. Hand-pick carefully to preserve quality."
+      description: "Hand-pick stigmas at dawn when flowers first open."
     }
   ];
 

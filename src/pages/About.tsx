@@ -6,20 +6,8 @@ const About = () => {
   useScrollAnimation();
 
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      {/* 3D Background (Spline embed) */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <iframe
-          src="https://my.spline.design/scrollflower-IrSwzsExCWbZzG9VKBXjM4Hz/"
-          title="Crocus Spline Background"
-          className="w-full h-full"
-          loading="lazy"
-          aria-hidden="true"
-        />
-      </div>
-      
-      {/* Content Layer */}
-      <div className="relative z-10">
+    <main className="min-h-screen">
+      <div>
         <Navigation />
         
         <div className="pt-32 pb-16 px-6">

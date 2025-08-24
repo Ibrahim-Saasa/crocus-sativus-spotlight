@@ -2,22 +2,22 @@ const BenefitsSection = () => {
   const benefits = [
     {
       title: "Culinary Excellence",
-      description: "Adds distinctive flavor, aroma, and golden color to dishes like paella, risotto, and Persian rice.",
+      description: "Distinctive flavor and golden color for paella, risotto, and rice dishes.",
       icon: "🍽️"
     },
     {
       title: "Antioxidant Properties",
-      description: "Rich in crocin, crocetin, and safranal compounds that provide powerful antioxidant benefits.",
+      description: "Rich in crocin and safranal compounds with powerful antioxidant benefits.",
       icon: "💊"
     },
     {
       title: "Mood Enhancement",
-      description: "Traditional use and modern studies suggest saffron may help support positive mood and emotional well-being.",
+      description: "Studies suggest saffron may support positive mood and emotional well-being.",
       icon: "😊"
     },
     {
       title: "Natural Beauty",
-      description: "Used in skincare for its anti-inflammatory properties and ability to promote radiant, healthy-looking skin.",
+      description: "Anti-inflammatory properties promote radiant, healthy-looking skin.",
       icon: "✨"
     }
   ];
