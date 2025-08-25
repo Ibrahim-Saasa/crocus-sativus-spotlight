@@ -26,7 +26,7 @@ const BenefitsSection = () => {
     <section className="py-20 px-6 bg-crocus-light/20">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-crocus-purple shadow-glow mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-crocus-purple text-glow mb-6">
             The Golden Benefits
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">

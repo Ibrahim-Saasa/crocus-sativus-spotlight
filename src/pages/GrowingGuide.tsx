@@ -105,7 +105,7 @@ const GrowingGuide = () => {
       {/* Growing Stages */}
       <section className="py-16 px-6 scroll-animate scroll-animate-delay-1">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-crocus-purple shadow-glow text-center mb-16">
+          <h2 className="text-4xl font-bold text-crocus-purple text-glow text-center mb-16">
             The Growing Process
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -143,7 +143,7 @@ const GrowingGuide = () => {
       {/* Growing Conditions */}
       <section className="py-16 px-6 bg-gradient-card scroll-animate scroll-animate-delay-2">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-crocus-purple shadow-glow text-center mb-16">
+          <h2 className="text-4xl font-bold text-crocus-purple text-glow text-center mb-16">
             Essential Growing Conditions
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

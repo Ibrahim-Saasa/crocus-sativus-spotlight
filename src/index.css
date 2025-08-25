@@ -150,6 +150,12 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-glow);
   }
 
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--crocus-purple) / 0.8),
+                 0 0 20px hsl(var(--crocus-purple) / 0.6),
+                 0 0 40px hsl(var(--crocus-purple) / 0.4);
+  }
+
   /* Animation utilities */
   @keyframes fade-in {
     0% {
