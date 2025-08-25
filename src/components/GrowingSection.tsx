@@ -28,7 +28,7 @@ const GrowingSection = () => {
     <section className="py-20 px-6 bg-gradient-card">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-crocus-deep mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-crocus-purple shadow-glow mb-6">
             Growing Crocus Sativus
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
