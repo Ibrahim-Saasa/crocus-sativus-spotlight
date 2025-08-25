@@ -105,7 +105,7 @@ const GrowingGuide = () => {
       {/* Growing Stages */}
       <section className="py-16 px-6 scroll-animate scroll-animate-delay-1">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-crocus-light text-center mb-16">
+          <h2 className="text-4xl font-bold text-crocus-purple shadow-glow text-center mb-16">
             The Growing Process
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -122,10 +122,10 @@ const GrowingGuide = () => {
                   <p className="text-saffron-gold font-semibold">{stage.timeline}</p>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <p className="text-muted-foreground text-center mb-4 font-medium">
+                  <p className="text-gray-700 text-center mb-4 font-medium">
                     {stage.description}
                   </p>
-                  <ul className="text-sm text-muted-foreground space-y-2">
+                  <ul className="text-sm text-gray-600 space-y-2">
                     {stage.details.map((detail, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 bg-saffron-gold rounded-full mt-2 flex-shrink-0"></span>
@@ -143,7 +143,7 @@ const GrowingGuide = () => {
       {/* Growing Conditions */}
       <section className="py-16 px-6 bg-gradient-card scroll-animate scroll-animate-delay-2">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-crocus-light text-center mb-16">
+          <h2 className="text-4xl font-bold text-crocus-purple shadow-glow text-center mb-16">
             Essential Growing Conditions
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -160,7 +160,7 @@ const GrowingGuide = () => {
                   <p className="text-saffron-gold font-semibold">{condition.requirement}</p>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     {condition.details}
                   </p>
                 </CardContent>
