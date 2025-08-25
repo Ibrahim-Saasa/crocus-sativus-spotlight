@@ -46,20 +46,21 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <Link 
-          to="/" 
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-6"
-        >
-          <ArrowLeft size={20} />
-          Back to Home
-        </Link>
-        
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-2">Crocus Sativus</h1>
-          <p className="text-muted-foreground">Join our saffron growing community</p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20 flex flex-col p-4">
+      <Link 
+        to="/" 
+        className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-6 self-start"
+      >
+        <ArrowLeft size={20} />
+        Back to Home
+      </Link>
+      
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-full max-w-md">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-primary mb-2">Crocus Sativus</h1>
+            <p className="text-muted-foreground">Join our saffron growing community</p>
+          </div>
 
         <Card className="shadow-xl border-0 bg-card/50 backdrop-blur-sm">
           <CardHeader className="text-center">
@@ -171,7 +172,8 @@ const Auth = () => {
               By continuing, you agree to our terms of service and privacy policy.
             </div>
           </CardContent>
-        </Card>
+          </Card>
+        </div>
       </div>
     </div>
   );

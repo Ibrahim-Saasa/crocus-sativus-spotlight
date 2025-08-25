@@ -3,6 +3,12 @@ import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LogOut, User } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const location = useLocation();
@@ -56,22 +62,25 @@ const Navigation = () => {
             {!loading && (
               <>
                 {user ? (
-                  <div className="flex items-center space-x-3">
-                    <Avatar className="h-8 w-8 border border-white/20">
-                      <AvatarFallback className="bg-primary/20 text-white text-sm">
-                        {getUserInitials()}
-                      </AvatarFallback>
-                    </Avatar>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={handleSignOut}
-                      className="text-white/90 hover:text-white hover:bg-white/10"
-                    >
-                      <LogOut className="h-4 w-4 mr-2" />
-                      Sign Out
-                    </Button>
-                  </div>
+                   <div className="flex items-center space-x-3">
+                     <DropdownMenu>
+                       <DropdownMenuTrigger asChild>
+                         <Button variant="ghost" size="sm" className="p-0">
+                           <Avatar className="h-8 w-8 border border-white/20">
+                             <AvatarFallback className="bg-primary/20 text-white text-sm">
+                               {getUserInitials()}
+                             </AvatarFallback>
+                           </Avatar>
+                         </Button>
+                       </DropdownMenuTrigger>
+                       <DropdownMenuContent align="end">
+                         <DropdownMenuItem onClick={handleSignOut} className="text-destructive">
+                           <LogOut className="w-4 h-4 mr-2" />
+                           Sign Out
+                         </DropdownMenuItem>
+                       </DropdownMenuContent>
+                     </DropdownMenu>
+                   </div>
                 ) : (
                   <Button
                     variant="ghost"
