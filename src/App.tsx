@@ -9,6 +9,7 @@ import GrowingGuide from "./pages/GrowingGuide";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Auth from "./pages/Auth";
+import SaffronMap from "./pages/SaffronMap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/growing-guide" element={<GrowingGuide />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/saffron-map" element={<SaffronMap />} />
             <Route path="/auth" element={<Auth />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

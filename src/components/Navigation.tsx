@@ -18,6 +18,7 @@ const Navigation = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
+    { name: "Saffron Map", path: "/saffron-map" },
     { name: "Blog", path: "/blog" },
   ];
 
