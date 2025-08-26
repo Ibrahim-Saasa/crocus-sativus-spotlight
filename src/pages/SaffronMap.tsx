@@ -126,7 +126,7 @@ const SaffronMap = () => {
             </p>
           </div>
 
-          <Card className="shadow-elegant bg-gradient-card border-crocus-light/30 overflow-hidden">
+          <Card className="shadow-elegant bg-gradient-card border-crocus-light/30 overflow-visible">
             <CardContent className="p-0">
               <div 
                 className="relative w-full h-[600px] md:h-[700px]"
@@ -173,6 +173,7 @@ const SaffronMap = () => {
                                 handleMouseEnter(saffronCountry, event);
                               }
                             }}
+                            onMouseMove={handleMouseMove}
                             onMouseLeave={handleMouseLeave}
                           />
                         );
@@ -182,7 +183,13 @@ const SaffronMap = () => {
                   
                   {/* Optional: Add markers for better visibility */}
                   {saffronCountries.map((country) => (
-                    <Marker key={country.iso} coordinates={country.coordinates}>
+                    <Marker 
+                      key={country.iso} 
+                      coordinates={country.coordinates}
+                      onMouseEnter={(event) => handleMouseEnter(country, event as any)}
+                      onMouseMove={handleMouseMove}
+                      onMouseLeave={handleMouseLeave}
+                    >
                       <circle r={3} fill="hsl(var(--crocus-purple))" stroke="white" strokeWidth={1} />
                     </Marker>
                   ))}
@@ -258,10 +265,10 @@ const SaffronMap = () => {
             {saffronCountries.slice(0, 4).map((country, index) => (
               <Card 
                 key={country.iso}
-                className={`shadow-elegant hover:shadow-glow transition-all duration-500 bg-white/80 backdrop-blur-sm border-crocus-light/30 hover-scale scroll-animate scroll-animate-delay-${index + 1}`}
+                className="shadow-elegant hover:shadow-glow transition-all duration-500 bg-white/80 backdrop-blur-sm border-crocus-light/30 hover-scale"
               >
                 <CardContent className="p-6 text-center">
-                  <h3 className="font-bold text-crocus-light text-lg mb-2">
+                  <h3 className="font-bold text-foreground text-lg mb-2">
                     {country.name}
                   </h3>
                   <p className="text-saffron-gold font-semibold text-xl mb-3">
