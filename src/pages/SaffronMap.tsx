@@ -135,8 +135,8 @@ const SaffronMap = () => {
                 <ComposableMap
                   projection="geoMercator"
                   projectionConfig={{
-                    scale: 147,
-                    center: [0, 20]
+                    scale: 220,
+                    center: [30, 35]
                   }}
                   width={800}
                   height={600}
