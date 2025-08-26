@@ -200,8 +200,8 @@ const SaffronMap = () => {
                   <div
                     className="fixed z-50 pointer-events-none"
                     style={{
-                      left: tooltipPosition.x + 10,
-                      top: tooltipPosition.y - 10,
+                      left: tooltipPosition.x + 5,
+                      top: tooltipPosition.y - 5,
                       transform: "translateY(-100%)"
                     }}
                   >
