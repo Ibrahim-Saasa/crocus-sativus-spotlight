@@ -100,7 +100,7 @@ const SaffronMap = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="py-20 px-6 bg-gradient-hero text-center">
+      <section className="pt-32 pb-20 px-6 bg-gradient-hero text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-glow">
             Saffron Map

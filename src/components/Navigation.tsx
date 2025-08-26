@@ -40,9 +40,9 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="bg-background/10 backdrop-blur-md border border-white/20 rounded-full px-10 py-4 shadow-elegant min-w-[780px] md:min-w-[900px] lg:min-w-[980px]">
-        <div className="flex items-center space-x-10">
-          <ul className="flex space-x-10 whitespace-nowrap">
+      <div className="bg-background/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 shadow-elegant">
+        <div className="flex items-center justify-center space-x-8">
+          <ul className="flex space-x-8">
             {navItems.map((item) => (
               <li key={item.name}>
                 <Link
@@ -59,7 +59,7 @@ const Navigation = () => {
             ))}
           </ul>
 
-          <div className="flex items-center space-x-4 border-l border-white/20 pl-8">
+          <div className="flex items-center space-x-4 border-l border-white/20 pl-6">
             {!loading && (
               <>
                 {user ? (
