@@ -76,17 +76,17 @@ const SaffronMap = () => {
   const handleMouseEnter = (country: typeof saffronCountries[0], event: React.MouseEvent) => {
     setHoveredCountry(country);
     const rect = (event.currentTarget as Element).getBoundingClientRect();
-    setTooltipPosition({ 
-      x: event.pageX || rect.left + rect.width / 2, 
-      y: event.pageY || rect.top 
+    setTooltipPosition({
+      x: event.clientX,
+      y: event.clientY
     });
   };
 
   const handleMouseMove = (event: React.MouseEvent) => {
     if (hoveredCountry) {
-      setTooltipPosition({ 
-        x: event.pageX || event.clientX, 
-        y: event.pageY || event.clientY 
+      setTooltipPosition({
+        x: event.clientX,
+        y: event.clientY
       });
     }
   };
@@ -200,9 +200,8 @@ const SaffronMap = () => {
                   <div
                     className="fixed z-50 pointer-events-none"
                     style={{
-                      left: tooltipPosition.x + 5,
-                      top: tooltipPosition.y - 5,
-                      transform: "translateY(-100%)"
+                      left: tooltipPosition.x + 12,
+                      top: tooltipPosition.y + 12
                     }}
                   >
                     <Card className="shadow-glow bg-gradient-card border-crocus-light/30 max-w-xs">

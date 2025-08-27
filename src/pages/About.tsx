@@ -1,7 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-
+import Timeline from "@/components/Timeline";
 const About = () => {
   useScrollAnimation();
 
@@ -60,6 +59,7 @@ const About = () => {
                 </p>
               </div>
             </div>
+            <Timeline />
           </div>
         </div>
       </div>
