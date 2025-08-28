@@ -16,7 +16,7 @@ interface BlogPostProps {
 const BlogPost = ({ post, onBack }: BlogPostProps) => {
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="scroll-animate">
+      <div className="scroll-animate animate">
         <button
           onClick={onBack}
           className="flex items-center gap-2 text-saffron-gold hover:text-saffron-light transition-colors mb-8 group"
