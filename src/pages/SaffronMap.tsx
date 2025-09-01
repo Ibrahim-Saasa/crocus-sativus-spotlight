@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import SaffronCountryDetail from "@/components/SaffronCountryDetail";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -69,6 +70,7 @@ const saffronCountries = [
 
 const SaffronMap = () => {
   const [hoveredCountry, setHoveredCountry] = useState<typeof saffronCountries[0] | null>(null);
+  const [selectedCountry, setSelectedCountry] = useState<typeof saffronCountries[0] | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   
   useScrollAnimation();
@@ -93,6 +95,15 @@ const SaffronMap = () => {
 
   const handleMouseLeave = () => {
     setHoveredCountry(null);
+  };
+
+  const handleCountryClick = (country: typeof saffronCountries[0]) => {
+    setSelectedCountry(country);
+    setHoveredCountry(null);
+  };
+
+  const handleCloseDetail = () => {
+    setSelectedCountry(null);
   };
 
   return (
@@ -122,7 +133,7 @@ const SaffronMap = () => {
               Global Saffron Production
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Hover over highlighted countries to discover their saffron production details and unique qualities.
+              Hover over highlighted countries to see quick info, or click for detailed saffron production information.
             </p>
           </div>
 
@@ -175,6 +186,11 @@ const SaffronMap = () => {
                             }}
                             onMouseMove={handleMouseMove}
                             onMouseLeave={handleMouseLeave}
+                            onClick={() => {
+                              if (saffronCountry) {
+                                handleCountryClick(saffronCountry);
+                              }
+                            }}
                           />
                         );
                       })
@@ -189,6 +205,8 @@ const SaffronMap = () => {
                       onMouseEnter={(event) => handleMouseEnter(country, event as any)}
                       onMouseMove={handleMouseMove}
                       onMouseLeave={handleMouseLeave}
+                      onClick={() => handleCountryClick(country)}
+                      style={{ cursor: 'pointer' }}
                     >
                       <circle r={3} fill="hsl(var(--crocus-purple))" stroke="white" strokeWidth={1} />
                     </Marker>
@@ -212,8 +230,11 @@ const SaffronMap = () => {
                         <p className="text-saffron-gold font-semibold text-sm mb-2">
                           {hoveredCountry.production}
                         </p>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-3">
                           {hoveredCountry.fact}
+                        </p>
+                        <p className="text-xs text-saffron-gold font-medium">
+                          Click for detailed information
                         </p>
                       </CardContent>
                     </Card>
@@ -284,6 +305,12 @@ const SaffronMap = () => {
       </section>
 
       <Footer />
+      
+      {/* Country Detail Modal */}
+      <SaffronCountryDetail 
+        country={selectedCountry} 
+        onClose={handleCloseDetail} 
+      />
     </main>
   );
 };
