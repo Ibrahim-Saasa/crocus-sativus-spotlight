@@ -134,7 +134,7 @@ const Blog = () => {
           />
         ) : (
           <div className="max-w-4xl mx-auto">
-            <div className="scroll-animate">
+            <div className="opacity-100">
               <h1 className="text-4xl md:text-6xl font-bold text-crocus-light mb-4 text-center">
                 Saffron Blog
               </h1>
@@ -145,7 +145,7 @@ const Blog = () => {
             
             <div className="space-y-8">
               {blogPosts.map((post, index) => (
-                <div key={post.id} className={`scroll-animate scroll-animate-delay-${index + 1}`}>
+                <div key={post.id} className="opacity-100">
                   <article className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover-scale cursor-pointer transition-all duration-300">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                       <span>By {post.author}</span>
@@ -174,7 +174,7 @@ const Blog = () => {
               ))}
             </div>
 
-            <div className="scroll-animate scroll-animate-delay-4 text-center mt-12">
+            <div className="scroll-animate scroll-animate-delay-4 text-center mt-12 opacity-100">
               <div className="bg-card/30 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
                 <h3 className="text-xl font-semibold text-crocus-light mb-4">
                   Want to contribute?
