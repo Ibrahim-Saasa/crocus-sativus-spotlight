@@ -1,4 +1,5 @@
 import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface BlogPostProps {
   post: {
@@ -14,11 +15,18 @@ interface BlogPostProps {
 }
 
 const BlogPost = ({ post, onBack }: BlogPostProps) => {
+  const navigate = useNavigate();
+  
+  const handleBack = () => {
+    onBack();
+    navigate('/blog');
+  };
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="scroll-animate animate">
         <button
-          onClick={onBack}
+          onClick={handleBack}
           className="flex items-center gap-2 text-saffron-gold hover:text-saffron-light transition-colors mb-8 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
