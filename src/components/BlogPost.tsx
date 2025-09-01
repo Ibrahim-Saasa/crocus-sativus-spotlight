@@ -18,6 +18,7 @@ const BlogPost = ({ post, onBack }: BlogPostProps) => {
   const navigate = useNavigate();
   
   const handleBack = () => {
+    console.log("Back button clicked");
     onBack();
     navigate('/blog');
   };

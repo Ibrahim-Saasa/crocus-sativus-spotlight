@@ -6,6 +6,8 @@ import BlogPost from "@/components/BlogPost";
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
   useScrollAnimation();
+  
+  console.log("Blog component rendered, selectedPost:", selectedPost);
 
   const blogPosts = [
     {
@@ -116,6 +118,9 @@ const Blog = () => {
   ];
 
   const currentPost = selectedPost ? blogPosts.find(post => post.id === selectedPost) : null;
+  
+  console.log("currentPost:", currentPost);
+  console.log("Rendering blog with selectedPost:", selectedPost);
 
   return (
     <main className="min-h-screen bg-gradient-dark-glow">
