@@ -55,7 +55,7 @@ const GrowingSection = () => {
           ))}
         </div>
 
-        <div className="bg-saffron-light/30 rounded-2xl p-8">
+        <div className="bg-gradient-accent rounded-2xl p-8">
           <h3 className="text-2xl font-semibold text-crocus-deep mb-4 text-center">
             Growing Conditions
           </h3>
