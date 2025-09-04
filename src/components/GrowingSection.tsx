@@ -63,17 +63,17 @@ const GrowingSection = () => {
             <div>
               <div className="text-3xl mb-2">🌡️</div>
               <h4 className="font-semibold text-crocus-deep mb-2">Climate</h4>
-              <p className="text-muted-foreground">Mediterranean climate with hot, dry summers and cool, wet winters</p>
+              <p className="text-gray-800">Mediterranean climate with hot, dry summers and cool, wet winters</p>
             </div>
             <div>
               <div className="text-3xl mb-2">💧</div>
               <h4 className="font-semibold text-crocus-deep mb-2">Water</h4>
-              <p className="text-muted-foreground">Minimal water during dormancy, moderate during growing season</p>
+              <p className="text-gray-800">Minimal water during dormancy, moderate during growing season</p>
             </div>
             <div>
               <div className="text-3xl mb-2">🌱</div>
               <h4 className="font-semibold text-crocus-deep mb-2">Yield</h4>
-              <p className="text-muted-foreground">Each bulb produces 1-3 flowers, each with 3 precious stigmas</p>
+              <p className="text-gray-800">Each bulb produces 1-3 flowers, each with 3 precious stigmas</p>
             </div>
           </div>
         </div>
