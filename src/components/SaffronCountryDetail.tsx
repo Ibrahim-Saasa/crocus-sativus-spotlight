@@ -5,6 +5,10 @@ import iranSaffron from "@/assets/iran-saffron.jpg";
 import kashmirSaffron from "@/assets/kashmir-saffron.jpg";
 import spainSaffron from "@/assets/spain-saffron.jpg";
 import greeceSaffron from "@/assets/greece-saffron.jpg";
+import moroccoSaffron from "@/assets/morocco-saffron.jpg";
+import franceSaffron from "@/assets/france-saffron.jpg";
+import italySaffron from "@/assets/italy-saffron.jpg";
+import afghanistanSaffron from "@/assets/afghanistan-saffron.jpg";
 
 interface CountryDetailProps {
   country: {
@@ -85,6 +89,74 @@ const countryDetails = {
       "Unique terroir characteristics"
     ],
     challenges: "Limited production area, market competition, weather dependency"
+  },
+  "MAR": {
+    image: moroccoSaffron,
+    climate: "Semi-arid Mediterranean climate",
+    harvestSeason: "October to November",
+    employmentStats: "2,000+ families involved",
+    quality: "Taliouine saffron - Premium grade",
+    exportValue: "$4 million annually",
+    regions: "Taliouine, Atlas Mountains region",
+    harvestingMethod: "Traditional Berber harvesting techniques, cooperative farming",
+    uniqueFeatures: [
+      "Grown at 1,200-1,800m altitude in Atlas Mountains",
+      "Cultivated by Berber communities for centuries",
+      "Organic farming practices in mountainous terrain",
+      "Unique terroir influenced by mountain climate"
+    ],
+    challenges: "Water scarcity, limited arable land, competition from imports"
+  },
+  "FRA": {
+    image: franceSaffron,
+    climate: "Continental Mediterranean climate",
+    harvestSeason: "Late October to November",
+    employmentStats: "150+ artisan producers",
+    quality: "Safran du Quercy - Artisan grade",
+    exportValue: "$2 million annually",
+    regions: "Quercy, Lot department, Occitanie",
+    harvestingMethod: "Artisan family farming, traditional French techniques",
+    uniqueFeatures: [
+      "Revival of medieval saffron cultivation tradition",
+      "Artisan production with high quality standards",
+      "Protected regional product certification",
+      "Sustainable farming practices"
+    ],
+    challenges: "Small scale production, high labor costs, limited market awareness"
+  },
+  "ITA": {
+    image: italySaffron,
+    climate: "Continental mountain climate",
+    harvestSeason: "Late October to November",
+    employmentStats: "300+ family producers",
+    quality: "Zafferano dell'Aquila DOP",
+    exportValue: "$3 million annually",
+    regions: "L'Aquila province, Abruzzo, Navelli plain",
+    harvestingMethod: "Traditional family farming, small-scale cooperative harvesting",
+    uniqueFeatures: [
+      "Most expensive saffron in the world by weight",
+      "DOP (Protected Designation of Origin) status",
+      "Grown in unique high-altitude karst plateau",
+      "Medieval cultivation tradition dating to 13th century"
+    ],
+    challenges: "Earthquake recovery, aging population, limited production area"
+  },
+  "AFG": {
+    image: afghanistanSaffron,
+    climate: "Continental arid climate",
+    harvestSeason: "October to November",
+    employmentStats: "30,000+ farmers involved",
+    quality: "Herat saffron - ISO Grade I",
+    exportValue: "$25 million annually",
+    regions: "Herat, Farah, Ghor provinces",
+    harvestingMethod: "Traditional irrigation farming, family-based harvesting",
+    uniqueFeatures: [
+      "Second largest producer globally",
+      "High crocin content rivaling Iranian saffron",
+      "Alternative crop replacing opium poppy cultivation",
+      "Women-led processing cooperatives"
+    ],
+    challenges: "Political instability, limited export infrastructure, market access"
   }
 };
 

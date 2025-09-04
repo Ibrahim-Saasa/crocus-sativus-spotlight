@@ -208,7 +208,7 @@ const SaffronMap = () => {
                       onClick={() => handleCountryClick(country)}
                       style={{ cursor: 'pointer' }}
                     >
-                      <circle r={3} fill="hsl(var(--crocus-purple))" stroke="white" strokeWidth={1} />
+                      <circle r={6} fill="hsl(var(--crocus-purple))" stroke="white" strokeWidth={1} />
                     </Marker>
                   ))}
                 </ComposableMap>
