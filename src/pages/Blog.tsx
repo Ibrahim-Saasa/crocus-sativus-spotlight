@@ -182,9 +182,12 @@ const Blog = () => {
                 <p className="text-muted-foreground mb-6">
                   Share your saffron growing experiences and join our community of enthusiasts.
                 </p>
-                <button className="bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105">
+                <a 
+                  href="mailto:contact@saffronblog.com?subject=Saffron Blog Contribution&body=Hi there,%0D%0A%0D%0AI'd like to share my saffron growing experiences and contribute to your blog.%0D%0A%0D%0APlease let me know how I can get involved!%0D%0A%0D%0ABest regards"
+                  className="inline-block bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105"
+                >
                   Get in Touch
-                </button>
+                </a>
               </div>
             </div>
           </div>
