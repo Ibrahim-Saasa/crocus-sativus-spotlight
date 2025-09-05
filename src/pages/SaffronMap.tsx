@@ -111,7 +111,7 @@ const SaffronMap = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-hero text-center">
+      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-gradient-hero via-crocus-purple/80 to-transparent text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-glow">
             Saffron Map
@@ -126,7 +126,7 @@ const SaffronMap = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 px-6 scroll-animate bg-gradient-to-b from-transparent via-transparent to-gradient-card/50">
+      <section className="py-16 px-6 scroll-animate bg-gradient-to-b from-transparent via-saffron-light/20 to-gradient-card">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-crocus-purple text-glow mb-6">
