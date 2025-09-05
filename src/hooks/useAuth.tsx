@@ -8,7 +8,6 @@ interface AuthContextType {
   session: Session | null;
   signUp: (email: string, password: string, displayName?: string) => Promise<{ error: any }>;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
-  signInWithOAuth: (provider: 'google' | 'facebook') => Promise<void>;
   signOut: () => Promise<void>;
   loading: boolean;
 }
@@ -86,23 +85,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error };
   };
 
-  const signInWithOAuth = async (provider: 'google' | 'facebook') => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${window.location.origin}/`
-      }
-    });
-
-    if (error) {
-      toast({
-        title: "Sign in failed",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
-  };
-
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (!error) {
@@ -118,7 +100,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     session,
     signUp,
     signIn,
-    signInWithOAuth,
     signOut,
     loading,
   };
