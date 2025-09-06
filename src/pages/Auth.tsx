@@ -55,6 +55,17 @@ const Auth = () => {
         Back to Home
       </Link>
       
+      {/* Blog Alert */}
+      <div className="fixed bottom-6 left-6 z-50">
+        <Card className="shadow-lg bg-saffron-gold/90 backdrop-blur-sm border-saffron-light/50 max-w-xs">
+          <CardContent className="p-4">
+            <p className="text-white text-sm font-medium text-center">
+              Please Sign In to Add Your Thoughts.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+      
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
