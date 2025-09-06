@@ -1,8 +1,23 @@
 import Navigation from "@/components/Navigation";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import Timeline from "@/components/Timeline";
+import { useEffect } from "react";
+
 const About = () => {
   useScrollAnimation();
+
+  useEffect(() => {
+    // Handle hash-based navigation
+    if (window.location.hash) {
+      const elementId = window.location.hash.substring(1);
+      const element = document.getElementById(elementId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, []);
 
   return (
     <main className="min-h-screen">
