@@ -126,7 +126,7 @@ const SaffronMap = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 px-6 scroll-animate bg-gradient-to-b from-transparent via-saffron-light/20 to-gradient-card">
+      <section className="py-16 px-6 scroll-animate bg-gradient-card">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-crocus-purple text-glow mb-6">
