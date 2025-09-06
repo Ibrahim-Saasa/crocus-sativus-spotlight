@@ -28,12 +28,14 @@ const HeroSection = () => {
           cultivated for over 3,000 years and worth more than gold.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
-            size="lg" 
-            className="bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-8 py-3 rounded-full shadow-elegant transition-all duration-300 hover:scale-105"
-          >
-            Learn More
-          </Button>
+          <Link to="/about#saffron-timeline">
+            <Button 
+              size="lg" 
+              className="bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-8 py-3 rounded-full shadow-elegant transition-all duration-300 hover:scale-105"
+            >
+              Learn More
+            </Button>
+          </Link>
           <Link to="/growing-guide">
             <Button 
               variant="outline" 

@@ -47,7 +47,7 @@ const events = [
 
 export default function Timeline() {
   return (
-    <section aria-labelledby="saffron-history" className="scroll-animate scroll-animate-delay-4 mt-8">
+    <section id="saffron-timeline" aria-labelledby="saffron-history" className="scroll-animate scroll-animate-delay-4 mt-8">
       <header className="mb-6 text-center">
         <h2 id="saffron-history" className="text-3xl md:text-4xl font-bold text-crocus-purple">
           Saffron Through the Ages
