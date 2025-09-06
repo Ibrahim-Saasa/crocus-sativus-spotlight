@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import BlogPost from "@/components/BlogPost";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
@@ -182,9 +183,11 @@ const Blog = () => {
                 <p className="text-muted-foreground mb-6">
                   Share your saffron growing experiences and join our community of enthusiasts.
                 </p>
-                <button className="bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105">
-                  Get in Touch
-                </button>
+                <Link to="/auth">
+                  <button className="bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105">
+                    Get in Touch
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
