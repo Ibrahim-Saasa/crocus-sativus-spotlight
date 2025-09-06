@@ -183,7 +183,7 @@ const Blog = () => {
                 <p className="text-muted-foreground mb-6">
                   Share your saffron growing experiences and join our community of enthusiasts.
                 </p>
-                <Link to="/auth">
+                <Link to="/auth?from=blog">
                   <button className="bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105">
                     Get in Touch
                   </button>

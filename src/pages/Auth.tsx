@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,8 +14,21 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showBlogAlert, setShowBlogAlert] = useState(false);
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  // Show blog alert if coming from blog page
+  useEffect(() => {
+    if (searchParams.get('from') === 'blog') {
+      setShowBlogAlert(true);
+      const timer = setTimeout(() => {
+        setShowBlogAlert(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
 
   // Redirect if user is already logged in
   useEffect(() => {
@@ -55,16 +68,18 @@ const Auth = () => {
         Back to Home
       </Link>
       
-      {/* Blog Alert */}
-      <div className="fixed bottom-6 left-6 z-50">
-        <Card className="shadow-lg bg-saffron-gold/90 backdrop-blur-sm border-saffron-light/50 max-w-xs">
-          <CardContent className="p-4">
-            <p className="text-white text-sm font-medium text-center">
-              Please Sign In to Add Your Thoughts.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Blog Alert - Only show when coming from blog */}
+      {showBlogAlert && (
+        <div className="fixed bottom-6 left-6 z-50">
+          <Card className="shadow-lg bg-saffron-gold/90 backdrop-blur-sm border-saffron-light/50 max-w-xs animate-in slide-in-from-left-5 duration-300">
+            <CardContent className="p-4">
+              <p className="text-white text-sm font-medium text-center">
+                Please Sign In to Add Your Thoughts.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      )}
       
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-md">
