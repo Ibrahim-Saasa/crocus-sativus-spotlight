@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useIsMobile } from "@/hooks/use-mobile";
 import SaffronCountryDetail from "@/components/SaffronCountryDetail";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
@@ -72,6 +73,7 @@ const SaffronMap = () => {
   const [hoveredCountry, setHoveredCountry] = useState<typeof saffronCountries[0] | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<typeof saffronCountries[0] | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const isMobile = useIsMobile();
   
   useScrollAnimation();
 
@@ -140,13 +142,13 @@ const SaffronMap = () => {
           <Card className="shadow-elegant bg-gradient-card border-crocus-light/30 overflow-visible">
             <CardContent className="p-0">
               <div 
-                className="relative w-full h-[600px] md:h-[700px]"
+                className="relative w-full h-[500px] sm:h-[600px] md:h-[700px]"
                 onMouseMove={handleMouseMove}
               >
                 <ComposableMap
                   projection="geoMercator"
                   projectionConfig={{
-                    scale: 220,
+                    scale: isMobile ? 280 : 220,
                     center: [30, 35]
                   }}
                   width={800}
@@ -246,10 +248,10 @@ const SaffronMap = () => {
 
           {/* Legend */}
           <div className="mt-8 text-center">
-            <Card className="inline-block shadow-elegant bg-gradient-card border-crocus-light/30">
-              <CardContent className="p-6">
+            <Card className="inline-block shadow-elegant bg-gradient-card border-crocus-light/30 max-w-sm mx-auto">
+              <CardContent className="p-4 sm:p-6">
                 <h3 className="font-bold text-crocus-light text-lg mb-4">Legend</h3>
-                <div className="flex items-center justify-center gap-6 text-sm">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm">
                   <div className="flex items-center gap-2">
                     <div className="w-4 h-4 rounded bg-saffron-gold"></div>
                     <span className="text-muted-foreground">Saffron Producing Countries</span>
