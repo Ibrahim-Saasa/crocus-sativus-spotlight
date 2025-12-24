@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
 import SaffronCountryDetail from "@/components/SaffronCountryDetail";
+import heroVideo from "@/assets/saffron-map-hero.mp4";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -113,15 +114,30 @@ const SaffronMap = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-gradient-hero via-crocus-purple/80 to-transparent text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-glow">
+      <section className="relative pt-32 pb-20 px-6 text-center overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-crocus-deep/80 via-crocus-purple/70 to-crocus-purple/90"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-glow animate-fade-in">
             Saffron Map
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-4 font-light">
+          <p className="text-xl md:text-2xl text-white/90 mb-4 font-light animate-fade-in [animation-delay:150ms] opacity-0 [animation-fill-mode:forwards]">
             Discover Global Saffron Production
           </p>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed animate-fade-in [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards]">
             Explore the world's saffron-producing regions and learn about their unique contributions to this precious spice trade.
           </p>
         </div>
