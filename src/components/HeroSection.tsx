@@ -17,18 +17,18 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-glow">
+        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-glow animate-fade-in">
           Crocus Sativus
         </h1>
-        <p className="text-xl md:text-2xl text-white/90 mb-4 font-light">
+        <p className="text-xl md:text-2xl text-white/90 mb-4 font-light animate-fade-in [animation-delay:150ms] opacity-0 [animation-fill-mode:forwards]">
           The Source of Precious Saffron
         </p>
-        <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards]">
           Discover the extraordinary flower that produces the world's most precious spice,
           cultivated for over 3,000 years and worth more than gold.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/about#saffron-timeline">
+          <Link to="/about#saffron-timeline" className="animate-fade-in [animation-delay:450ms] opacity-0 [animation-fill-mode:forwards]">
             <Button 
               variant="default"
               size="lg" 
@@ -37,7 +37,7 @@ const HeroSection = () => {
               Learn More
             </Button>
           </Link>
-          <Link to="/growing-guide">
+          <Link to="/growing-guide" className="animate-fade-in [animation-delay:600ms] opacity-0 [animation-fill-mode:forwards]">
             <Button 
               variant="outline" 
               size="lg"
