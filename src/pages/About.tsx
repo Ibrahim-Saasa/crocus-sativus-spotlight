@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import Timeline from "@/components/Timeline";
 import { useEffect, useRef, useState } from "react";
 
@@ -172,9 +173,11 @@ const About = () => {
         </div>
       </section>
 
+      <Footer />
+
       {/* Section Indicators */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3">
-        {[0, ...sections.map((_, i) => i + 1), sections.length + 1].map((index) => (
+        {Array.from({ length: sections.length + 2 }, (_, index) => (
           <button
             key={index}
             onClick={() => {
