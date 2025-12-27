@@ -170,6 +170,54 @@ const About = () => {
           }`}
         >
           <Timeline />
+          
+          {/* Additional Content Below Timeline */}
+          <div className="mt-16 space-y-12">
+            {/* Fun Facts Grid */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-card/70 backdrop-blur-md rounded-xl border border-white/20 p-6 text-center hover-scale">
+                <div className="text-4xl font-bold text-saffron-gold mb-2">150+</div>
+                <p className="text-muted-foreground text-sm">Flowers needed for just one gram of saffron</p>
+              </div>
+              <div className="bg-card/70 backdrop-blur-md rounded-xl border border-white/20 p-6 text-center hover-scale">
+                <div className="text-4xl font-bold text-crocus-light mb-2">3,000+</div>
+                <p className="text-muted-foreground text-sm">Years of documented saffron cultivation</p>
+              </div>
+              <div className="bg-card/70 backdrop-blur-md rounded-xl border border-white/20 p-6 text-center hover-scale">
+                <div className="text-4xl font-bold text-saffron-gold mb-2">90%</div>
+                <p className="text-muted-foreground text-sm">Of world production comes from Iran</p>
+              </div>
+            </div>
+            
+            {/* Call to Action */}
+            <div className="bg-gradient-to-br from-crocus-purple/20 to-saffron-gold/10 rounded-2xl border border-white/10 p-8 md:p-10 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Want to Dive Deeper?
+              </h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+                Explore our comprehensive History page for an in-depth journey through saffron's 
+                remarkable story—from ancient Minoan frescoes to modern scientific discoveries.
+              </p>
+              <a 
+                href="/history" 
+                className="inline-flex items-center gap-2 bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-8 py-3 rounded-full shadow-elegant transition-all duration-300 hover:scale-105"
+              >
+                Explore Full History
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+            
+            {/* Quote Section */}
+            <div className="text-center py-8">
+              <div className="text-4xl text-saffron-gold mb-4">"</div>
+              <blockquote className="text-xl md:text-2xl text-foreground/80 italic max-w-2xl mx-auto leading-relaxed">
+                Saffron is the sunrise captured in a thread—each stigma holds the essence of a thousand dawns.
+              </blockquote>
+              <cite className="text-muted-foreground mt-4 block">— Ancient Persian Saying</cite>
+            </div>
+          </div>
         </div>
       </section>
 
