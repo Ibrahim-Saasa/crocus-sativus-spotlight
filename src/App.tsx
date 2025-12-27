@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Auth from "./pages/Auth";
 import SaffronMap from "./pages/SaffronMap";
+import History from "./pages/History";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/growing-guide" element={<GrowingGuide />} />
             <Route path="/about" element={<About />} />
+            <Route path="/history" element={<History />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/saffron-map" element={<SaffronMap />} />
             <Route path="/auth" element={<Auth />} />
