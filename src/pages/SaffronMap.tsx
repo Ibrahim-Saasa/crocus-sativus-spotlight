@@ -7,6 +7,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
 import SaffronCountryDetail from "@/components/SaffronCountryDetail";
 import heroVideo from "@/assets/saffron-map-hero.mp4";
+import { MapPin, TrendingUp, Globe, Sparkles } from "lucide-react";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -143,15 +144,52 @@ const SaffronMap = () => {
         </div>
       </section>
 
+      {/* Quick Stats Bar */}
+      <section className="py-8 px-6 bg-crocus-purple/10 border-y border-crocus-light/20">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="flex items-center justify-center gap-3">
+            <Globe className="w-8 h-8 text-crocus-purple" />
+            <div>
+              <p className="text-2xl font-bold text-crocus-purple">8</p>
+              <p className="text-sm text-muted-foreground">Major Regions</p>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-3">
+            <TrendingUp className="w-8 h-8 text-saffron-gold" />
+            <div>
+              <p className="text-2xl font-bold text-saffron-gold">476+</p>
+              <p className="text-sm text-muted-foreground">Tons/Year</p>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-3">
+            <MapPin className="w-8 h-8 text-crocus-light" />
+            <div>
+              <p className="text-2xl font-bold text-crocus-light">90%</p>
+              <p className="text-sm text-muted-foreground">From Iran</p>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-3">
+            <Sparkles className="w-8 h-8 text-saffron-deep" />
+            <div>
+              <p className="text-2xl font-bold text-saffron-deep">$5K+</p>
+              <p className="text-sm text-muted-foreground">Per kg</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Map Section */}
-      <section className="py-16 px-6 scroll-animate bg-gradient-card">
+      <section className="py-16 px-6 scroll-animate bg-gradient-to-b from-background to-crocus-purple/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-saffron-gold/20 text-saffron-deep rounded-full text-sm font-medium mb-4">
+              Interactive Map
+            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-crocus-purple text-glow mb-6">
-              Global Saffron Production
+              Explore Production Regions
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Hover over highlighted countries to see quick info, or click for detailed saffron production information.
+              Click on the <span className="text-saffron-gold font-medium">golden highlighted countries</span> or the <span className="text-crocus-purple font-medium">pulsing markers</span> to discover each region's saffron heritage.
             </p>
           </div>
 
@@ -215,7 +253,7 @@ const SaffronMap = () => {
                     }
                   </Geographies>
                   
-                  {/* Optional: Add markers for better visibility */}
+                  {/* Pulsing markers for production centers */}
                   {saffronCountries.map((country) => (
                     <Marker 
                       key={country.iso} 
@@ -226,7 +264,24 @@ const SaffronMap = () => {
                       onClick={() => handleCountryClick(country)}
                       style={{ cursor: 'pointer' }}
                     >
-                      <circle r={6} fill="hsl(var(--crocus-purple))" stroke="white" strokeWidth={1} />
+                      {/* Outer pulse ring */}
+                      <circle 
+                        r={12} 
+                        fill="hsl(var(--crocus-purple))" 
+                        opacity={0.3}
+                        className="animate-ping"
+                        style={{ animationDuration: '2s' }}
+                      />
+                      {/* Inner solid circle */}
+                      <circle 
+                        r={7} 
+                        fill="hsl(var(--crocus-purple))" 
+                        stroke="white" 
+                        strokeWidth={2}
+                        className="drop-shadow-lg"
+                      />
+                      {/* Center dot */}
+                      <circle r={3} fill="white" />
                     </Marker>
                   ))}
                 </ComposableMap>
@@ -262,40 +317,28 @@ const SaffronMap = () => {
             </CardContent>
           </Card>
 
-          {/* Legend */}
+          {/* Call to action hint */}
           <div className="mt-8 text-center">
-            <Card className="inline-block shadow-elegant bg-gradient-card border-crocus-light/30 max-w-sm mx-auto">
-              <CardContent className="p-4 sm:p-6">
-                <h3 className="font-bold text-crocus-light text-lg mb-4">Legend</h3>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-saffron-gold"></div>
-                    <span className="text-muted-foreground">Saffron Producing Countries</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-muted"></div>
-                    <span className="text-muted-foreground">Other Countries</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-crocus-purple border border-white"></div>
-                    <span className="text-muted-foreground">Production Centers</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <p className="text-muted-foreground text-sm flex items-center justify-center gap-2">
+              <MapPin className="w-4 h-4 text-crocus-purple animate-bounce" />
+              <span>Click any highlighted region to explore its saffron story</span>
+            </p>
           </div>
         </div>
       </section>
 
       {/* Production Statistics */}
-      <section className="py-16 px-6 bg-gradient-card scroll-animate scroll-animate-delay-1">
+      <section className="py-16 px-6 bg-gradient-to-b from-crocus-purple/5 to-background scroll-animate scroll-animate-delay-1">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-crocus-purple/10 text-crocus-purple rounded-full text-sm font-medium mb-4">
+              Top Producers
+            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-crocus-purple text-glow mb-6">
-              Production Overview
+              Leading Saffron Regions
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Global saffron production statistics by region
+              Discover the top four saffron-producing regions and their unique contributions
             </p>
           </div>
 
@@ -303,17 +346,31 @@ const SaffronMap = () => {
             {saffronCountries.slice(0, 4).map((country, index) => (
               <Card 
                 key={country.iso}
-                className="shadow-elegant hover:shadow-glow transition-all duration-500 bg-white/80 backdrop-blur-sm border-crocus-light/30 hover-scale"
+                className="group shadow-elegant hover:shadow-glow transition-all duration-500 bg-gradient-card border-crocus-light/30 hover-scale cursor-pointer overflow-hidden"
+                onClick={() => handleCountryClick(country)}
               >
-                <CardContent className="p-6 text-center">
+                <CardContent className="p-6 text-center relative">
+                  {/* Rank badge */}
+                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-saffron-gold/20 flex items-center justify-center">
+                    <span className="text-saffron-deep font-bold text-sm">#{index + 1}</span>
+                  </div>
+                  
+                  <div className="w-12 h-12 rounded-full bg-crocus-purple/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-crocus-purple/20 transition-colors">
+                    <MapPin className="w-6 h-6 text-crocus-purple" />
+                  </div>
+                  
                   <h3 className="font-bold text-foreground text-lg mb-2">
                     {country.name}
                   </h3>
                   <p className="text-saffron-gold font-semibold text-xl mb-3">
                     {country.production}
                   </p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
                     {country.fact}
+                  </p>
+                  
+                  <p className="mt-4 text-xs text-crocus-purple font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Click to learn more →
                   </p>
                 </CardContent>
               </Card>
