@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Timeline from "@/components/Timeline";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useEffect, useRef, useState } from "react";
 
 const sections = [
@@ -31,6 +32,8 @@ const sections = [
 ];
 
 const About = () => {
+  useScrollAnimation();
+
   const [activeSection, setActiveSection] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -48,8 +51,8 @@ const About = () => {
         });
       },
       {
-        threshold: 0.6,
-        root: null
+        threshold: 0.2,
+        root: null,
       }
     );
 
