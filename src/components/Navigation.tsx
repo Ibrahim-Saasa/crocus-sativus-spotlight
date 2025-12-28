@@ -131,7 +131,7 @@ const Navigation = () => {
   // Desktop Navigation
   return (
     <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="bg-background/10 backdrop-blur-md border border-white/20 rounded-full px-16 py-3 shadow-elegant min-w-[650px]">
+      <div className="bg-background/10 backdrop-blur-md border border-white/20 rounded-full px-20 py-3 shadow-elegant min-w-[780px]">
         <div className="flex items-center justify-center space-x-8">
           <ul className="flex space-x-8">
             {navItems.map((item) => (
