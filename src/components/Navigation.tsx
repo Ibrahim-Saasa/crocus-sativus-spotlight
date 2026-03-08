@@ -25,6 +25,7 @@ const Navigation = () => {
     { name: "History", path: "/history" },
     { name: "Saffron Map", path: "/saffron-map" },
     { name: "Blog", path: "/blog" },
+    { name: "Buy", path: "/buy" },
   ];
 
   const handleSignOut = async () => {
