@@ -7,21 +7,32 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, Send } from "lucide-react";
 
+interface EditData {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author_name: string;
+}
+
 interface CreateBlogPostProps {
   onBack: () => void;
   onCreated: () => void;
+  editData?: EditData | null;
 }
 
-const CreateBlogPost = ({ onBack, onCreated }: CreateBlogPostProps) => {
+const CreateBlogPost = ({ onBack, onCreated, editData }: CreateBlogPostProps) => {
   const { user } = useAuth();
   const { toast } = useToast();
-  const [title, setTitle] = useState("");
-  const [excerpt, setExcerpt] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(editData?.title || "");
+  const [excerpt, setExcerpt] = useState(editData?.excerpt || "");
+  const [content, setContent] = useState(editData?.content || "");
   const [authorName, setAuthorName] = useState(
-    user?.user_metadata?.display_name || ""
+    editData?.author_name || user?.user_metadata?.display_name || ""
   );
   const [submitting, setSubmitting] = useState(false);
+
+  const isEditing = !!editData;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,24 +48,42 @@ const CreateBlogPost = ({ onBack, onCreated }: CreateBlogPostProps) => {
 
     setSubmitting(true);
 
-    const { error } = await supabase.from("blog_posts").insert({
-      user_id: user!.id,
-      title: title.trim(),
-      excerpt: excerpt.trim(),
-      content: content.trim(),
-      author_name: authorName.trim(),
-    });
+    let error;
+
+    if (isEditing) {
+      ({ error } = await supabase
+        .from("blog_posts")
+        .update({
+          title: title.trim(),
+          excerpt: excerpt.trim(),
+          content: content.trim(),
+          author_name: authorName.trim(),
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", editData.id));
+    } else {
+      ({ error } = await supabase.from("blog_posts").insert({
+        user_id: user!.id,
+        title: title.trim(),
+        excerpt: excerpt.trim(),
+        content: content.trim(),
+        author_name: authorName.trim(),
+      }));
+    }
 
     setSubmitting(false);
 
     if (error) {
       toast({
         title: "Error",
-        description: "Failed to create post. Please try again.",
+        description: `Failed to ${isEditing ? "update" : "create"} post. Please try again.`,
         variant: "destructive",
       });
     } else {
-      toast({ title: "Post published!", description: "Your blog post is now live." });
+      toast({
+        title: isEditing ? "Post updated!" : "Post published!",
+        description: isEditing ? "Your changes have been saved." : "Your blog post is now live.",
+      });
       onCreated();
     }
   };
@@ -71,7 +100,7 @@ const CreateBlogPost = ({ onBack, onCreated }: CreateBlogPostProps) => {
 
       <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/10">
         <h2 className="text-3xl font-bold text-crocus-light mb-8">
-          Write a New Post
+          {isEditing ? "Edit Post" : "Write a New Post"}
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -134,7 +163,7 @@ const CreateBlogPost = ({ onBack, onCreated }: CreateBlogPostProps) => {
             className="bg-saffron-gold hover:bg-saffron-gold/90 text-white font-semibold px-6 py-3 rounded-full"
           >
             <Send className="w-4 h-4 mr-2" />
-            {submitting ? "Publishing..." : "Publish Post"}
+            {submitting ? (isEditing ? "Saving..." : "Publishing...") : (isEditing ? "Save Changes" : "Publish Post")}
           </Button>
         </form>
       </div>

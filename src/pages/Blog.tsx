@@ -6,7 +6,8 @@ import CreateBlogPost from "@/components/CreateBlogPost";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
-import { Plus } from "lucide-react";
+import { Plus, Pencil, Trash2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 interface BlogPostData {
   id: string;
@@ -16,6 +17,9 @@ interface BlogPostData {
   author: string;
   date: string;
   readTime: string;
+  userId?: string;
+  rawContent?: string;
+  authorName?: string;
 }
 
 const staticPosts: BlogPostData[] = [
@@ -77,8 +81,11 @@ function estimateReadTime(content: string): string {
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
   const [showCreate, setShowCreate] = useState(false);
+  const [editingPost, setEditingPost] = useState<{ id: string; title: string; excerpt: string; content: string; author_name: string } | null>(null);
   const [dbPosts, setDbPosts] = useState<BlogPostData[]>([]);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const { user } = useAuth();
+  const { toast } = useToast();
   useScrollAnimation();
 
   const fetchPosts = async () => {
@@ -94,13 +101,16 @@ const Blog = () => {
           title: p.title,
           excerpt: p.excerpt,
           content: `<p style="margin-bottom: 1.5rem;">${p.content.replace(/\n\n/g, '</p><p style="margin-bottom: 1.5rem;">')}</p>`,
+          rawContent: p.content,
           author: p.author_name,
+          authorName: p.author_name,
           date: new Date(p.created_at).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           }),
           readTime: estimateReadTime(p.content),
+          userId: p.user_id,
         }))
       );
     }
@@ -110,22 +120,38 @@ const Blog = () => {
     fetchPosts();
   }, []);
 
+  const handleDelete = async (postId: string) => {
+    setDeletingId(postId);
+    const { error } = await supabase.from("blog_posts").delete().eq("id", postId);
+    setDeletingId(null);
+
+    if (error) {
+      toast({ title: "Error", description: "Failed to delete post.", variant: "destructive" });
+    } else {
+      toast({ title: "Post deleted", description: "Your post has been removed." });
+      fetchPosts();
+    }
+  };
+
   const allPosts = [...dbPosts, ...staticPosts];
   const currentPost = selectedPost
     ? allPosts.find((post) => post.id === selectedPost)
     : null;
 
-  if (showCreate && user) {
+  // Show create/edit form
+  if ((showCreate || editingPost) && user) {
     return (
       <main className="min-h-screen bg-gradient-dark-glow">
         <Navigation />
         <div className="pt-32 pb-16 px-6">
           <CreateBlogPost
-            onBack={() => setShowCreate(false)}
+            onBack={() => { setShowCreate(false); setEditingPost(null); }}
             onCreated={() => {
               setShowCreate(false);
+              setEditingPost(null);
               fetchPosts();
             }}
+            editData={editingPost}
           />
         </div>
       </main>
@@ -163,34 +189,74 @@ const Blog = () => {
             )}
 
             <div className="space-y-8">
-              {allPosts.map((post) => (
-                <div key={post.id} className="opacity-100">
-                  <article className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover-scale cursor-pointer transition-all duration-300">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                      <span>By {post.author}</span>
-                      <span>•</span>
-                      <span>{post.date}</span>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
-                    </div>
+              {allPosts.map((post) => {
+                const isOwner = user && post.userId === user.id;
 
-                    <h2 className="text-2xl font-semibold text-crocus-light mb-4 hover:text-saffron-gold transition-colors">
-                      {post.title}
-                    </h2>
+                return (
+                  <div key={post.id} className="opacity-100">
+                    <article className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover-scale cursor-pointer transition-all duration-300">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <span>By {post.author}</span>
+                          <span>•</span>
+                          <span>{post.date}</span>
+                          <span>•</span>
+                          <span>{post.readTime}</span>
+                        </div>
 
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {post.excerpt}
-                    </p>
+                        {isOwner && (
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setEditingPost({
+                                  id: post.id,
+                                  title: post.title,
+                                  excerpt: post.excerpt,
+                                  content: post.rawContent || post.excerpt,
+                                  author_name: post.authorName || post.author,
+                                });
+                              }}
+                              className="p-2 rounded-lg text-muted-foreground hover:text-crocus-light hover:bg-white/5 transition-colors"
+                              title="Edit post"
+                            >
+                              <Pencil className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (confirm("Are you sure you want to delete this post?")) {
+                                  handleDelete(post.id);
+                                }
+                              }}
+                              disabled={deletingId === post.id}
+                              className="p-2 rounded-lg text-muted-foreground hover:text-destructive hover:bg-white/5 transition-colors disabled:opacity-50"
+                              title="Delete post"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        )}
+                      </div>
 
-                    <button
-                      onClick={() => setSelectedPost(post.id)}
-                      className="text-saffron-gold font-medium hover:text-saffron-light transition-colors"
-                    >
-                      Read More →
-                    </button>
-                  </article>
-                </div>
-              ))}
+                      <h2 className="text-2xl font-semibold text-crocus-light mb-4 hover:text-saffron-gold transition-colors">
+                        {post.title}
+                      </h2>
+
+                      <p className="text-muted-foreground leading-relaxed mb-6">
+                        {post.excerpt}
+                      </p>
+
+                      <button
+                        onClick={() => setSelectedPost(post.id)}
+                        className="text-saffron-gold font-medium hover:text-saffron-light transition-colors"
+                      >
+                        Read More →
+                      </button>
+                    </article>
+                  </div>
+                );
+              })}
             </div>
 
             {!user && (
