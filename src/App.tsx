@@ -12,6 +12,7 @@ import Blog from "./pages/Blog";
 import Auth from "./pages/Auth";
 import SaffronMap from "./pages/SaffronMap";
 import History from "./pages/History";
+import Buy from "./pages/Buy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
