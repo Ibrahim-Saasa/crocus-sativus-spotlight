@@ -20,6 +20,11 @@ const Auth = () => {
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const nextParam = searchParams.get('next');
+  const safeNext =
+    nextParam && nextParam.startsWith('/') && !nextParam.startsWith('//')
+      ? nextParam
+      : '/';
 
   // Show blog alert if coming from blog page
   useEffect(() => {
@@ -35,9 +40,9 @@ const Auth = () => {
   // Redirect if user is already logged in
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate(safeNext);
     }
-  }, [user, navigate]);
+  }, [user, navigate, safeNext]);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +51,7 @@ const Auth = () => {
     const { error } = await signIn(email, password);
     
     if (!error) {
-      navigate('/');
+      navigate(safeNext);
     }
     
     setIsLoading(false);
