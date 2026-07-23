@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://fjczrrbaozfnntqixqpc.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "crocus-sativus-mcp",
+      "version": "0.1.0",
+      "title": "Crocus Sativus Blog MCP"
+    },
+    "tools": [
+      {
+        "name": "list_blog_posts",
+        "title": "List blog posts",
+        "description": "List all published saffron blog posts, most recent first. Returns title, author, excerpt, creation date, and post ID.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max number of posts to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_blog_post",
+        "title": "Get blog post",
+        "description": "Fetch the full content of a single saffron blog post by its ID (title, author, excerpt, and full body).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The UUID of the blog post to fetch."
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_my_blog_posts",
+        "title": "List my blog posts",
+        "description": "List only the blog posts authored by the signed-in user, most recent first.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max number of posts to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "create_blog_post",
+        "title": "Create blog post",
+        "description": "Create a new saffron blog post authored by the signed-in user. Requires a title, short excerpt, and full post content.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "description": "Post title."
+            },
+            "excerpt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500,
+              "description": "Short summary shown on the blog listing."
+            },
+            "content": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Full post body (plain text or markdown)."
+            },
+            "author_name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "description": "Optional display name for the author. Defaults to the signed-in user's email."
+            }
+          },
+          "required": [
+            "title",
+            "excerpt",
+            "content"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "update_blog_post",
+        "title": "Update blog post",
+        "description": "Update one of the signed-in user's own blog posts. Only fields provided are changed. Users cannot edit other authors' posts.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The UUID of the blog post to update."
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "description": "New post title."
+            },
+            "excerpt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500,
+              "description": "New excerpt."
+            },
+            "content": {
+              "type": "string",
+              "minLength": 1,
+              "description": "New full post body."
+            },
+            "author_name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "description": "New display name for the author."
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "delete_blog_post",
+        "title": "Delete blog post",
+        "description": "Permanently delete one of the signed-in user's own blog posts. Users cannot delete other authors' posts.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The UUID of the blog post to delete."
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
